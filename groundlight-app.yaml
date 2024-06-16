@@ -2,7 +2,7 @@ name: Deer Bark
 description: Looks for deer, and plays a barking noise if it sees one.
 version: 0.5.0
 runtime:
-  king: "poetry"
+  kind: "poetry"
   working_dir: "."
 entrypoint: poetry run python app.py
 
