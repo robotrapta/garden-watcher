@@ -11,6 +11,7 @@ readme = "README.md"
 python = "^3.11"
 framegrab = "^0.5.2"
 groundlight = "^0.16.0"
+pygame = "^2.5.2"
 
 
 [build-system]
