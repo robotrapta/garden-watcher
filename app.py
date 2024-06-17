@@ -7,16 +7,20 @@ import cv2
 import framegrab
 import pygame
 
-camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
-motdet = framegrab.MotionDetector(pct_threshold=1, val_threshold=50)
-
-
 def main():
-    gl = Groundlight()
+    camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
+    motdet = framegrab.MotionDetector(pct_threshold=1, val_threshold=50)
 
     pygame.init()
     pygame.mixer.init()
-    SOUND = pygame.mixer.Sound("./dog-barking.mp3")
+    sound = pygame.mixer.Sound("./dog-barking.mp3")
+    last_sound = 0
+
+    gl = Groundlight()
+    detector = gl.get_or_create_detector(
+        name="deerbark",
+        query="Can you see any animals?"
+    )
 
     while True:
         print("grabbing")
@@ -29,11 +33,22 @@ def main():
             imgcat(img)
         else:
             print("no motion")
-            time.sleep(0.05)
+            time.sleep(0.5)
             continue
-        #SOUND.play()
-        print("waiting")
-        #time.sleep(10)
+
+        img_query = gl.ask_ml(detector=detector, image=img)
+        if img_query.result.label == "YES":
+            print(f"FOUND animal! {img_query}")
+            elapsed = time.time() - last_sound
+            if elapsed > 30:
+                print("Playing sound!")
+                sound.play()
+                last_sound = time.time()
+            else:
+                print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
+        else:
+            print(f"No animal found: {img_query.result}")
+
 
 if __name__ == "__main__":
     main()
