@@ -45,8 +45,8 @@ If you'd like a different sound, just install a new `.mp3` file.
 
 ## Groundlight account setup
 
-You can use a free Groundlight account.  Then get a 
-[Groundlight API token](https://code.groundlight.ai/python-sdk/docs/getting-started/api-tokens) and save it as an environment variable:
+You can use a free Groundlight account.  Then get an
+[API token](https://code.groundlight.ai/python-sdk/docs/getting-started/api-tokens) and save it as an environment variable:
 
 ```
 export GROUNDLIGHT_API_TOKEN="api_..."
@@ -59,10 +59,10 @@ export GROUNDLIGHT_API_TOKEN="api_..."
 python app.py
 ```
 
+You might want to edit the motion detection parameters to make it more or less sensitive.
+
 
 ## Hardware
 
-I used a Raspberry Pi 4 with a camera module.  You can use any camera that
-works with the [framegrab](https://github.com/groundlight/framegrab) library.
-
-For easy set-up, you can use Groundlight's [pre-built Raspberry Pi images](https://github.com/groundlight/groundlight-pi-gen).
+I used a Raspberry Pi 4 with a camera module.  It will work anywhere you have the right python
+and libraries installed.  I used Groundlight's [pre-built Raspberry Pi image](https://github.com/groundlight/groundlight-pi-gen).
