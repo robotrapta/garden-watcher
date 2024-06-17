@@ -36,7 +36,7 @@ your terminal (if you have an advanced terminal program such as
 [iTerm2](https://iterm2.com/)).
 
 ```
-python trycamera.py
+python3 trycamera.py
 ```
 
 
@@ -45,7 +45,7 @@ python trycamera.py
 Make sure the sound is working properly:
 
 ```
-python dogsound.py
+python3 dogsound.py
 ```
 
 If you'd like a different sound, just install a new `.mp3` file.
@@ -64,7 +64,7 @@ export GROUNDLIGHT_API_TOKEN="api_..."
 ## Running the real thing
 
 ```
-python app.py
+python3 app.py
 ```
 
 You might want to edit the motion detection parameters to make it more or less sensitive.
