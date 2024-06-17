@@ -5,13 +5,10 @@ any animals in the scene, and if it sees one it plays a sound of a barking dog.
 
 # Setting up
 
-## Groundlight account setup
-
-You can use a free Groundlight account.  Then get a 
-[Groundlight API token](https://code.groundlight.ai/python-sdk/docs/getting-started/api-tokens) and save it as an environment variable:
+## Installing python dependencies
 
 ```
-export GROUNDLIGHT_API_TOKEN="api_..."
+pip install -r requirements.txt
 ```
 
 ## Camera configuration and preview
@@ -34,16 +31,34 @@ Note that you can include secrets with environment variable substitution
 like `{{CAMERA_PASSWORD}}`.  You can set these in your shell before running
 the app.
 
-
-## Running the python program
-
-Install the dependencies with pip:
+You can check that the code is all working with:
 
 ```
-pip install -r requirements.txt
+python trycamera.py
 ```
 
-Then run the app:
+## Checking the sound
+
+Make sure the sound is working properly:
+
+```
+python trybark.py
+```
+
+If you'd like a different sound, just install a new `.mp3` file.
+
+
+## Groundlight account setup
+
+You can use a free Groundlight account.  Then get a 
+[Groundlight API token](https://code.groundlight.ai/python-sdk/docs/getting-started/api-tokens) and save it as an environment variable:
+
+```
+export GROUNDLIGHT_API_TOKEN="api_..."
+```
+
+
+## Running the real thing
 
 ```
 python app.py

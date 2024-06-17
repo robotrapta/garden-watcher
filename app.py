@@ -8,17 +8,30 @@ import cv2
 import framegrab
 import pygame
 
-class GardenWatcher():
+class FakeDog():
 
     def __init__(self):
-        self.camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
-        self.motdet = framegrab.MotionDetector(pct_threshold=3, val_threshold=50)
-
         pygame.init()
         pygame.mixer.init()
         self.sound = pygame.mixer.Sound("./dog-barking.mp3")
         self.last_sound_played_at = 0  # start at 0 so that sound always plays first time
 
+    def alert(self):
+        elapsed = time.time() - self.last_sound_played_at
+        if elapsed > 30:
+            print(f"Playing sound!")
+            self.sound.play()
+            self.last_sound_played_at = time.time()
+        else:
+            print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
+
+
+class GardenWatcher():
+
+    def __init__(self):
+        self.camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
+        self.motdet = framegrab.MotionDetector(pct_threshold=3, val_threshold=50)
+        self.fake_dog = FakeDog()
         self.gl = Groundlight()
         self.detector = self.gl.get_or_create_detector(
             name="deerbark",
@@ -44,13 +57,7 @@ class GardenWatcher():
             img_query = self.gl.ask_ml(detector=self.detector, image=big_img)
             if img_query.result.label == "YES":
                 print(f"Animal detected at {now}! {img_query}")
-                elapsed = time.time() - self.last_sound_played_at
-                if elapsed > 30:
-                    print("Playing sound!")
-                    self.sound.play()
-                    self.last_sound_played_at = time.time()
-                else:
-                    print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
+                self.fake_dog.alert()
             else:
                 print(f"No animal found at {now}: {img_query}")
         time.sleep(5)
