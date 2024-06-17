@@ -8,11 +8,11 @@ plays a sound of a barking dog.
 
 I'm trying to establish woodsorrel clovers as a beautiful groundcover.  But I'm having trouble getting them established.  Because deer keeping eating them.  So I set up a raspberry pi with a loudspeaker and a camera to bark at the deer.  It's all running on power-over-ethernet.
 
-[<img src="./media/needs-protecting.jpeg" alt="Woodsorrel needs protecting" width="220">](./media/needs-protecting.jpegJ)
-[<img src="./media/the-enemy.jpeg" alt="The Enemy" width="220">](./media/the-enemy.jpeg)
-[<img src="./media/our-tool.jpeg" alt="Our tool" width="220">](./media/our-tool.jpeg)
-[<img src="./media/the-tech.jpeg" alt="Our tool" width="220">](./media/the-tech.jpeg)
-[<img src="./media/poe.jpeg" alt="Power over ethernet" width="220">](./media/poe.jpeg)
+[<img src="./media/needs-protecting.jpeg" alt="Woodsorrel needs protecting" height="220">](./media/needs-protecting.jpeg)
+[<img src="./media/the-enemy.jpeg" alt="The Enemy" height="220">](./media/the-enemy.jpeg)
+[<img src="./media/our-tool.jpeg" alt="Our tool" height="220">](./media/our-tool.jpeg)
+[<img src="./media/the-tech.jpeg" alt="Our tool" height="220">](./media/the-tech.jpeg)
+[<img src="./media/poe.jpeg" alt="Power over ethernet" height="220">](./media/poe.jpeg)
 
 
 # Setting up
