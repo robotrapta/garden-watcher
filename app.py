@@ -9,7 +9,7 @@ import pygame
 
 def main():
     camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
-    motdet = framegrab.MotionDetector(pct_threshold=3, val_threshold=50)
+    motdet = framegrab.MotionDetector(pct_threshold=5, val_threshold=50)
 
     pygame.init()
     pygame.mixer.init()
@@ -24,13 +24,13 @@ def main():
 
     while True:
         now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-        img = camera.grab()  # img is a numpy array
-        img = cv2.resize(img, (800, 600))
+        big_img = camera.grab()  # img is a numpy array
+        img = cv2.resize(big_img, (800, 600))
         if not motdet.motion_detected(img):
             print(f"no motion at {now}")
         else:
             imgcat(img)
-            img_query = gl.ask_ml(detector=detector, image=img)
+            img_query = gl.ask_ml(detector=detector, image=big_img)
             if img_query.result.label == "YES":
                 print(f"Animal detected at {now}! {img_query}")
                 elapsed = time.time() - last_sound_played_at
