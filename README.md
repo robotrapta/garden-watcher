@@ -13,6 +13,7 @@ I'm trying to establish woodsorrel clovers as a beautiful groundcover.  But I'm 
 [<img src="./media/our-tool.jpeg" alt="Our tool" height="220">](./media/our-tool.jpeg)
 [<img src="./media/the-tech.jpeg" alt="Our tool" height="220">](./media/the-tech.jpeg)
 [<img src="./media/poe.jpeg" alt="Power over ethernet" height="220">](./media/poe.jpeg)
+[<img src="./media/the-whole-scene.jpeg" alt="The whole scene" height="220">](./media/the-whole-scene.jpeg)
 
 
 # Setting up
