@@ -47,7 +47,7 @@ python trycamera.py
 Make sure the sound is working properly:
 
 ```
-python trybark.py
+python dogsound.py
 ```
 
 If you'd like a different sound, just install a new `.mp3` file.

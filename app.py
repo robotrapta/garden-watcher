@@ -6,24 +6,8 @@ from groundlight import Groundlight
 from imgcat import imgcat
 import cv2
 import framegrab
-import pygame
 
-class FakeDog():
-
-    def __init__(self):
-        pygame.init()
-        pygame.mixer.init()
-        self.sound = pygame.mixer.Sound("./dog-barking.mp3")
-        self.last_sound_played_at = 0  # start at 0 so that sound always plays first time
-
-    def alert(self):
-        elapsed = time.time() - self.last_sound_played_at
-        if elapsed > 30:
-            print(f"Playing sound!")
-            self.sound.play()
-            self.last_sound_played_at = time.time()
-        else:
-            print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
+from dogsound import FakeDog
 
 
 class GardenWatcher():
