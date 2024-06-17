@@ -9,12 +9,12 @@ import pygame
 
 def main():
     camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
-    motdet = framegrab.MotionDetector(pct_threshold=1, val_threshold=50)
+    motdet = framegrab.MotionDetector(pct_threshold=3, val_threshold=50)
 
     pygame.init()
     pygame.mixer.init()
     sound = pygame.mixer.Sound("./dog-barking.mp3")
-    last_sound = 0
+    last_sound_played_at = 0
 
     gl = Groundlight()
     detector = gl.get_or_create_detector(
@@ -23,32 +23,26 @@ def main():
     )
 
     while True:
-        print("grabbing")
+        now = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
         img = camera.grab()  # img is a numpy array
-        print(f"grabbed image of size {img.shape}")
-        # Resize the numpy array to 800x600
         img = cv2.resize(img, (800, 600))
-        if motdet.motion_detected(img):
-            print("motion")
+        if not motdet.motion_detected(img):
+            print(f"no motion at {now}")
+        else:
             imgcat(img)
-        else:
-            print("no motion")
-            time.sleep(0.5)
-            continue
-
-        img_query = gl.ask_ml(detector=detector, image=img)
-        if img_query.result.label == "YES":
-            print(f"FOUND animal! {img_query}")
-            elapsed = time.time() - last_sound
-            if elapsed > 30:
-                print("Playing sound!")
-                sound.play()
-                last_sound = time.time()
+            img_query = gl.ask_ml(detector=detector, image=img)
+            if img_query.result.label == "YES":
+                print(f"Animal detected at {now}! {img_query}")
+                elapsed = time.time() - last_sound_played_at
+                if elapsed > 30:
+                    print("Playing sound!")
+                    sound.play()
+                    last_sound_played_at = time.time()
+                else:
+                    print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
             else:
-                print(f"Last sound was played {elapsed:.1f} seconds ago - too recent to play again")
-        else:
-            print(f"No animal found: {img_query.result}")
-
+                print(f"No animal found at {now}: {img_query.result}")
+        time.sleep(5)
 
 if __name__ == "__main__":
     main()
