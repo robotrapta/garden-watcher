@@ -6,11 +6,8 @@ from imgcat import imgcat
 import framegrab
 import pygame
 
-def next_image():
-    global camera
-    if camera is None:
-        camera = framegrab.FrameGrabber.create_grabber_yaml("./framegrab.yaml")
-    return camera.grab()
+camera = framegrab.FrameGrabber.from_yaml("./framegrab.yaml")[0]
+
 
 def main():
     gl = Groundlight()
@@ -20,7 +17,7 @@ def main():
     SOUND = pygame.mixer.Sound("./dog-barking.mp3")
 
     while True:
-        img = next_image()
+        img = camera.grab()
         imgcat(img)
         print("barking!")
         #SOUND.play()
