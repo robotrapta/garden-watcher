@@ -10,7 +10,7 @@ class FakeDog():
     The sound is played only if the last time it was played was more than `cooldown` seconds ago.
     """
 
-    def __init__(self, filename="./dog-barking.mp3", cooldown=30):
+    def __init__(self, filename="./media/dog-barking.mp3", cooldown=30):
         pygame.init()
         pygame.mixer.init()
         self.sound = pygame.mixer.Sound(filename)
