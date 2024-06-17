@@ -1,7 +1,10 @@
 image_sources:
-- name: sorrel
+- name: gardencam
   input_type: rtsp
   id: 
       rtsp_url: rtsp://admin:{{CAMERA_PASSWORD}}@192.168.1.127:554
-
+      # CAMERA_PASSWORD must be set as an environment variable
+      # before running the app.
+      # You can preview this with:
+      #   framegrab preview ./framegrab.yaml
 

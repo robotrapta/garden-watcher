@@ -20,27 +20,17 @@ pip install -r requirements.txt
 
 You need to customize the `framegrab.yaml` file to point to the correct camera.
 See [framegrab](https://github.com/groundlight/framegrab) for reference, but this
-file is a pretty good starting point.  You can add cropping and other settings
-to the yaml file to get the best results.
+file is a pretty good starting point.  It can use a local Raspberry Pi or USB camera,
+or most any networked RTSP camera.  
 
-To preview if the camera config is working properly:
-
-```
-framegrab preview ./framegrab.yaml
-```
-
-The in-terminal preview requires an advanced terminal program such as
-[iTerm2](https://iterm2.com/).
-
-Note that you can include secrets with environment variable substitution
-like `{{CAMERA_PASSWORD}}`.  You can set these in your shell before running
-the app.
-
-You can check that the code is all working with:
+You can check that the camera code is all working properly by seeing a preview in
+your terminal (if you have an advanced terminal program such as
+[iTerm2](https://iterm2.com/)).
 
 ```
 python trycamera.py
 ```
+
 
 ## Checking the sound
 
@@ -76,6 +66,3 @@ I used a Raspberry Pi 4 with a camera module.  You can use any camera that
 works with the [framegrab](https://github.com/groundlight/framegrab) library.
 
 For easy set-up, you can use Groundlight's [pre-built Raspberry Pi images](https://github.com/groundlight/groundlight-pi-gen).
-
-https://hub.docker.com/r/groundlight/groundlight-raspberry-pi-camera
-
