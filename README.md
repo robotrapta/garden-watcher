@@ -1,7 +1,12 @@
-# Deer Bark
+# AI Garden Watcher
 
-Uses [Groundlight](https://pypi.org/project/groundlight/) to detect the presence of
-any animals in the scene, and if it sees one it plays a sound of a barking dog.
+Uses [Computer Vision](https://pypi.org/project/groundlight/) to keep an automated
+eye on your garden.  If it detects any animals in the scene, and if it sees one it 
+plays a sound of a barking dog.
+
+I built this to keep deer from eating my woodsorrel clovers.  Feel free to adapt
+for your own purposes.
+
 
 # Setting up
 
