@@ -1,8 +1,8 @@
 # AI Garden Watcher
 
 Uses [Computer Vision](https://pypi.org/project/groundlight/) to keep an automated
-eye on your garden.  If it detects any animals in the scene, and if it sees one it 
-plays a sound of a barking dog.
+eye on your garden.  If it detects any animals in the scene, it plays a sound of a barking dog
+through the loudspeaker to scare away the animals.
 
 ## Motivation
 
